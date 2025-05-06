@@ -14,10 +14,10 @@ async function updateSmokeStatus() {
         const data = await response.json();
         
         // Update status text
-        if (data.status === 'white') {
+        if (data.smokeStatus === 'white') {
             statusElement.textContent = 'YES. A new pope has been elected!';
             smokeImageElement.innerHTML = `<img src="${WHITE_SMOKE_IMAGE}" alt="White smoke from Vatican chimney" class="smoke-image">`;
-        } else if (data.status === 'black') {
+        } else if (data.smokeStatus === 'black') {
             statusElement.textContent = 'NO. The world waits.';
             smokeImageElement.innerHTML = `<img src="${BLACK_SMOKE_IMAGE}" alt="Black smoke from Vatican chimney" class="smoke-image">`;
         } else {
