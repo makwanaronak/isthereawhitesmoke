@@ -39,7 +39,7 @@ function initializeAds() {
 // Update status every 30 seconds
 function startPolling() {
     updateSmokeStatus();
-    setInterval(updateSmokeStatus, 30000);
+    setInterval(updateSmokeStatus, 500000);
 }
 
 // Initialize everything when the page loads
