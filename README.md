@@ -4,8 +4,8 @@ A real-time status website that checks if there's white smoke from the Vatican c
 
 ## Features
 
-- Real-time status updates from the Vatican conclave
-- Dynamic content based on API response
+- Real-time status updates from environment variables
+- Dynamic content based on status
 - Responsive design using Tailwind CSS
 - Social media sharing integration
 - Google Analytics tracking
@@ -20,7 +20,17 @@ A real-time status website that checks if there's white smoke from the Vatican c
    - AdSense ad slot IDs (`XXXXXXXXXX`)
    - Smoke image URLs in `script.js`
 
-2. Deploy to Azure Static Web Apps:
+2. Set up environment variables in Azure Static Web Apps:
+   ```bash
+   # Set the SMOKE_STATUS environment variable
+   az staticwebapp appsettings set --name your-app-name --setting-names SMOKE_STATUS=black
+   ```
+
+   Valid values for SMOKE_STATUS:
+   - `white` - A new pope has been elected
+   - `black` - No pope elected yet
+
+3. Deploy to Azure Static Web Apps:
    ```bash
    # Install Azure CLI
    npm install -g @azure/static-web-apps-cli
@@ -57,21 +67,20 @@ A real-time status website that checks if there's white smoke from the Vatican c
 
 - `index.html` - Main HTML file
 - `styles.css` - Custom CSS styles
-- `script.js` - JavaScript for API calls and dynamic content
+- `script.js` - JavaScript for dynamic content
+- `api/get-smoke-status/index.js` - API function for status
 - `README.md` - This file
 
-## API Integration
+## Environment Variables
 
-The website uses the following API endpoint:
-- `https://smokestatus.azurewebsites.net/api/smoke-status`
-
-The API returns:
-- `white` - A new pope has been elected
-- `black` - No pope elected yet
+The website uses the following environment variable:
+- `SMOKE_STATUS` - Current status of the Vatican conclave
+  - `white` - A new pope has been elected
+  - `black` - No pope elected yet
 
 ## Maintenance
 
-1. Regularly check API endpoint availability
+1. Regularly update the SMOKE_STATUS environment variable
 2. Update smoke images if needed
 3. Monitor Google Analytics for performance
 4. Check AdSense performance and adjust ad placements if necessary

@@ -1,7 +1,6 @@
 // Constants
-const API_URL = 'https://smokestatus.azurewebsites.net/api/smoke-status';
-const WHITE_SMOKE_IMAGE = 'https://isthereawhitesmoke.com/white-smoke.webp'; // Replace with actual image URL
-const BLACK_SMOKE_IMAGE = 'https://isthereawhitesmoke.com/black.jpeg'; // Replace with actual image URL
+const WHITE_SMOKE_IMAGE = 'https://isthereawhitesmoke.com/white-smoke.webp';
+const BLACK_SMOKE_IMAGE = 'https://isthereawhitesmoke.com/black.jpeg';
 
 // DOM Elements
 const statusElement = document.getElementById('status');
@@ -10,7 +9,8 @@ const smokeImageElement = document.getElementById('smoke-image');
 // Function to update the status and image
 async function updateSmokeStatus() {
     try {
-        const response = await fetch(API_URL);
+        // Get the status from the server-side environment variable
+        const response = await fetch('/api/get-smoke-status');
         const data = await response.json();
         
         // Update status text
@@ -39,7 +39,7 @@ function initializeAds() {
 // Update status every 30 seconds
 function startPolling() {
     updateSmokeStatus();
-    setInterval(updateSmokeStatus, 500000);
+    setInterval(updateSmokeStatus, 30000);
 }
 
 // Initialize everything when the page loads
