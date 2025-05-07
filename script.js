@@ -1,6 +1,6 @@
 // Constants
-const WHITE_SMOKE_IMAGE = 'https://isthereawhitesmoke.com/white-smoke.webp';
-const BLACK_SMOKE_IMAGE = 'https://isthereawhitesmoke.com/black.jpeg';
+const WHITE_SMOKE_IMAGE = '/images/white-smoke.webp';
+const BLACK_SMOKE_IMAGE = '/images/black.jpeg';
 
 // DOM Elements
 const statusElement = document.getElementById('status');
